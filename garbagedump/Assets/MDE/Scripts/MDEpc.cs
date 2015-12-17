@@ -20,6 +20,9 @@ public class MDEpc : MonoBehaviour {
 
 
 	Vector3 lookRot;
+	public LayerMask lay;
+	bool usingMouse = true;
+	Vector3 lookTarget;
 
 	void Start () {
 		controller = GetComponent<CharacterController>();
@@ -30,6 +33,15 @@ public class MDEpc : MonoBehaviour {
 	}
 
 	void Update(){
+
+		if(usingMouse){
+			RaycastHit vHit;
+			Ray vRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if(Physics.Raycast(vRay, out vHit, 1000, lay)) 
+			{
+				lookTarget = vHit.point;
+			}
+		}
 	
 
 		//knockback
@@ -126,14 +138,25 @@ public class MDEpc : MonoBehaviour {
 			ax = walkSpeed;
 		if(au)
 			az = walkSpeed;
+
+
 		
-
+		
 		if(!gotHit){
+			
 
-			if(ax == 0f && az == 0f)
-				lookRot = lookRot; //keep player looking in direction he's facing
-			else
-				lookRot = new Vector3(-ax, yGo, -az); //make player face new dir of movement
+
+			if(usingMouse){
+				lookRot =  transform.position - lookTarget;
+				lookRot.y = 0f;
+			}else{
+				if(ax == 0f && az == 0f){
+					lookRot = lookRot; //keep player looking in direction he's facing
+					
+				}else{
+					lookRot = new Vector3(-ax, yGo, -az); //make player face new dir of movement
+				}
+			}
 
 			controller.SimpleMove(new Vector3(xGo, yGo, zGo));
 			controller.transform.forward = Vector3.RotateTowards(transform.forward, lookRot, Time.deltaTime * 30f, 0f);
