@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MDEpc : MonoBehaviour {
 	public ParticleSystem[] hitEnemyParticleSystem;
 	
-	float walkSpeed = 20f;
+	float walkSpeed = 10f;
 	float gotHitSpeed = 5f;
 
 	public int health;
@@ -23,6 +24,8 @@ public class MDEpc : MonoBehaviour {
 	public LayerMask lay;
 	bool usingMouse = true;
 	Vector3 lookTarget;
+	GameObject attackBox;
+	List<MDEec> hitList;
 
 	void Start () {
 		controller = GetComponent<CharacterController>();
@@ -30,6 +33,8 @@ public class MDEpc : MonoBehaviour {
 		health = 100;
 		readyToTakeDmgAgain = true;
 		lookRot = transform.forward;
+		attackBox = transform.Find("attackBox").gameObject;
+		hitList = new List<MDEec>();
 	}
 
 	void Update(){
@@ -41,25 +46,51 @@ public class MDEpc : MonoBehaviour {
 			{
 				lookTarget = vHit.point;
 			}
+
+			//attack and do something to guys we hit
+			if (Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) {
+				animator.SetTrigger("MDEattack");
+
+				Collider[] hitColliders = Physics.OverlapSphere (attackBox.transform.position, 1.5f);
+				hitList.Clear ();
+				
+				int i = 0;
+				while (i < hitColliders.Length) {
+					if (hitColliders [i].gameObject.GetComponent<MDEec> () != null) {
+						hitList.Add (hitColliders [i].gameObject.GetComponent<MDEec> ());
+					}
+					i++;
+				}
+
+				foreach(MDEec e in hitList){
+					e.beenHit = true;
+//					Vector3 enemyFlytoPos = Vector3.Normalize(e.gameObject.transform.position - transform.position);
+					Vector3 enemyFlytoPos = e.gameObject.transform.position - transform.position;
+
+					enemyFlytoPos = enemyFlytoPos * 2f;
+					enemyFlytoPos.y = e.gameObject.transform.position.y;
+
+					e.gotHitFlyToPos = enemyFlytoPos;
+				}
+			}
+
 		}
 	
 
 		//knockback
-		if(gotHit == true){
-			float step = gotHitSpeed * Time.deltaTime;
-			transform.position = Vector3.Lerp(transform.position, gotHitFlyToPos, step);
+//		if(gotHit == true){
+//			float step = gotHitSpeed * Time.deltaTime;
+//			transform.position = Vector3.Lerp(transform.position, gotHitFlyToPos, step);
+//
+//			//threshhold keeps player from slowing down too much near end of knockback
+//			if((transform.position - gotHitFlyToPos).magnitude < 2f){
+//				gotHit = false;
+//				readyToTakeDmgAgain = true;
+//			}
+//		}
 
-			//threshhold keeps player from slowing down too much near end of knockback
-			if((transform.position - gotHitFlyToPos).magnitude < 2f){
-				gotHit = false;
-				readyToTakeDmgAgain = true;
-			}
-		}
 
 
-		if (Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) {
-			animator.SetTrigger("MDEattack");
-		}
 		
 //		if(Input.GetKey (KeyCode.Mouse1)){
 //			animator.SetBool("blocking", true);
@@ -143,9 +174,6 @@ public class MDEpc : MonoBehaviour {
 		
 		
 		if(!gotHit){
-			
-
-
 			if(usingMouse){
 				lookRot =  transform.position - lookTarget;
 				lookRot.y = 0f;
@@ -159,7 +187,7 @@ public class MDEpc : MonoBehaviour {
 			}
 
 			controller.SimpleMove(new Vector3(xGo, yGo, zGo));
-			controller.transform.forward = Vector3.RotateTowards(transform.forward, lookRot, Time.deltaTime * 30f, 0f);
+			controller.transform.forward = Vector3.RotateTowards(transform.forward, lookRot, Time.deltaTime * 50f, 0f);
 		}
 
 

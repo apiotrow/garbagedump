@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDE/Scripts/MDEpc.cs">
+    <Files>
+      <File FileName="Assets/MDE/Scripts/MDEpc.cs" Line="67" Column="31" />
+      <File FileName="Assets/MDE/Scripts/MDEec.cs" Line="31" Column="58" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
