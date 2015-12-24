@@ -10,6 +10,8 @@ public class MDESFcc : MonoBehaviour {
 	float walkSpeed = 10f;
 	bool allowAttack = true;
 
+	GameObject atkcube;
+
 	internal class animTriggers{
 		public const string thrust = "thrust";
 		public const string whirlwind = "whirlwind";
@@ -25,7 +27,7 @@ public class MDESFcc : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator>();
 		cc = GetComponent<CharacterController>();
-
+		atkcube = transform.Find("atkcube").gameObject;
 	}
 
 	void Update () {

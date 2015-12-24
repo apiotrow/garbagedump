@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDE/Scripts/MDEpc.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDESFcc.cs">
     <Files>
-      <File FileName="Assets/MDE/Scripts/MDEec.cs" Line="19" Column="33" />
-      <File FileName="Assets/MDE/Scripts/MDEpc.cs" Line="67" Column="36" />
-      <File FileName="Assets/MDE/Scripts/MDEcamcontrol.cs" Line="23" Column="116" />
+      <File FileName="Assets/MDESFcc.cs" Line="23" Column="3" />
+      <File FileName="../../pixelrpg/Assets/Scripts/EnemyController.cs" Line="104" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
