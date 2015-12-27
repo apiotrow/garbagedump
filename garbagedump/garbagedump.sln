@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{E4C36F81-2379-148F-4454-1B2E5A18FCC6}") = "garbagedump", "Assembly-CSharp.csproj", "{B8A0AF5D-49ED-F46B-88EE-1BDF79A12A18}"
 EndProject
+Project("{E4C36F81-2379-148F-4454-1B2E5A18FCC6}") = "garbagedump", "Assembly-CSharp-Editor.csproj", "{FD55A88A-4754-3638-CC30-84270F3B2D93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B8A0AF5D-49ED-F46B-88EE-1BDF79A12A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8A0AF5D-49ED-F46B-88EE-1BDF79A12A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8A0AF5D-49ED-F46B-88EE-1BDF79A12A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD55A88A-4754-3638-CC30-84270F3B2D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD55A88A-4754-3638-CC30-84270F3B2D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD55A88A-4754-3638-CC30-84270F3B2D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD55A88A-4754-3638-CC30-84270F3B2D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

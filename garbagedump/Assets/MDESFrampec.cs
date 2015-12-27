@@ -39,6 +39,15 @@ public class MDESFrampec : MonoBehaviour {
 		ramp.value = Mathf.MoveTowards(ramp.value, 1f, Time.deltaTime * speed);
 	}
 
+	public bool wrongButton(){
+		for(int i = 0; i < buttons.Length; i++){
+			if(currMove != i && Input.GetKeyDown(buttons[i])){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void resetMove(){
 		currMove = -1;
 		ramp.value = 0f;

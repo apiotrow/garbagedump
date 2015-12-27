@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDESFatkcubeenter.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDESF/Scripts/MDESFrampcc.cs">
     <Files>
-      <File FileName="Assets/MDESFcc.cs" Line="30" Column="50" />
-      <File FileName="../../pixelrpg/Assets/Scripts/EnemyController.cs" Line="1" Column="1" />
-      <File FileName="Assets/MDESFatkcubeenter.cs" Line="20" Column="6" />
+      <File FileName="Assets/MDESF/Scripts/MDESFrampcc.cs" Line="41" Column="28" />
+      <File FileName="Assets/MDESFrampec.cs" Line="44" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

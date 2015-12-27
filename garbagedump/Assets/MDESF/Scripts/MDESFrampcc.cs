@@ -39,11 +39,28 @@ public class MDESFrampcc : MonoBehaviour {
 	}
 
 	bool pressedWrongButton(){
-		for(int i = 0; i < enemyc.buttons.Length; i++){
-			if(enemyc.currMove != i && Input.GetKeyDown(enemyc.buttons[i])){
-				return true;
-			}
-		}
-		return false;
+		//least invasive
+		return enemyc.wrongButton();
+
+		//invasive method
+//		for(int i = 0; i < enemyc.buttons.Length; i++){
+//			if(enemyc.currMove != i && Input.GetKeyDown(enemyc.buttons[i])){
+//				return true;
+//			}
+//		}
+//		return false;
+
+
+
+		//neat but still invasive
+		//		KeyCode[] k = enemyc.buttons;
+		//		int cm = enemyc.currMove;
+		//
+		//		for(int i = 0; i < k.Length; i++){
+		//			if(cm != i && Input.GetKeyDown(k[i])){
+		//				return true;
+		//			}
+		//		}
+		//		return false;
 	}
 }
