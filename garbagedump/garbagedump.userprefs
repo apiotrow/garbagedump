@@ -1,11 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MDESF/Scripts/MDESFrampcc.cs">
-    <Files>
-      <File FileName="Assets/MDESF/Scripts/MDESFrampcc.cs" Line="41" Column="28" />
-      <File FileName="Assets/MDESFrampec.cs" Line="44" Column="53" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
