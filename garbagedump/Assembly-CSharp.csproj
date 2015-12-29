@@ -51,6 +51,8 @@
      <Compile Include="Assets\MDESF\Scripts\MDESFatkcubeenter.cs" />
      <Compile Include="Assets\MDESF\Scripts\MDESFcc.cs" />
      <Compile Include="Assets\MDESF\Scripts\MDESFrampcc.cs" />
+     <Compile Include="Assets\MDESF\Scripts\MouseOrbitImproved.cs" />
+     <Compile Include="Assets\MDESFfigurecc.cs" />
      <Compile Include="Assets\MDESFrampec.cs" />
      <Compile Include="Assets\SpritesAndBones\Scripts\AnimationWindowUtils.cs" />
      <Compile Include="Assets\SpritesAndBones\Scripts\Bone.cs" />
