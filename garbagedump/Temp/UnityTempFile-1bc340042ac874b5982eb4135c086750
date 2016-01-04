@@ -81,6 +81,7 @@
 'Assets/MDESF/Scripts/MDESFcc.cs'
 'Assets/MDESF/Scripts/MDESFrampcc.cs'
 'Assets/MDESF/Scripts/MouseOrbitImproved.cs'
+'Assets/MDESFfigurecc.cs'
 'Assets/MDESFrampec.cs'
 'Assets/SpritesAndBones/Scripts/AnimationWindowUtils.cs'
 'Assets/SpritesAndBones/Scripts/Bone.cs'
