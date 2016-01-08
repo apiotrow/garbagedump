@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../pixelrpg/Assets/Scripts/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../pixelrpg/Assets/UIthings.cs">
     <Files>
-      <File FileName="../../pixelrpg/Assets/Scripts/PlayerController.cs" Line="1" Column="1" />
+      <File FileName="../../pixelrpg/Assets/Scripts/PlayerController.cs" Line="4" Column="34" />
+      <File FileName="../../pixelrpg/Assets/UIthings.cs" Line="12" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
