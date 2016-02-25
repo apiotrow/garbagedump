@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/MDESF/Scenes/2d.unity
+  isLoaded: 1
+  isActive: 1

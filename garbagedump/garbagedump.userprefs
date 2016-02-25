@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../pixelrpg/Assets/UIthings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../ageofcronus/Assets/Scripts/Loader.cs">
     <Files>
-      <File FileName="../../pixelrpg/Assets/Scripts/PlayerController.cs" Line="4" Column="34" />
-      <File FileName="../../pixelrpg/Assets/UIthings.cs" Line="12" Column="22" />
+      <File FileName="../../ageofcronus/Assets/Scripts/gameHUD.cs" Line="1" Column="1" />
+      <File FileName="../../ageofcronus/Assets/Scripts/player.cs" Line="221" Column="44" />
+      <File FileName="../../ageofcronus/Assets/Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="../../ageofcronus/Assets/Scripts/Loader.cs" Line="18" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
