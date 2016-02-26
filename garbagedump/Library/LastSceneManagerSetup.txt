@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MDESF/Scenes/2d.unity
+- path: Assets/LSYS/Scenes/1.unity
   isLoaded: 1
   isActive: 1

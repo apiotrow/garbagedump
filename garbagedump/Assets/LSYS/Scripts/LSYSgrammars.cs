@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public static class LSYSgrammars {
 	
 	public static Dictionary<string, string> simple = new Dictionary<string, string>(){
-		{"a", "ab"},
+		{"a", "b"},
 		{"b", "bc"},
-		{"c", "cd"},
-		{"d", "da"}
+		{"c", "bcd"},
+		{"d", "bba"},
 	};
 
 	//a: x+, b: z+, c: x-, d: z-, starting: a

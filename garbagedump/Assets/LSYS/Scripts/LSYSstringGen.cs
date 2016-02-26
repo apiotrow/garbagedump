@@ -10,7 +10,7 @@ public class LSYSstringGen : MonoBehaviour
 	void Start ()
 	{
 //		StartCoroutine(generateLString(LSYSgrammars.rhombus, 5, "ac"));
-		generateLString (LSYSgrammars.simple, 5, "a");
+		generateLString (LSYSgrammars.levycurve, 5, "a");
 
 //		print(Lstring);
 
@@ -20,20 +20,28 @@ public class LSYSstringGen : MonoBehaviour
 		char[] charArray = Lstring.ToCharArray ();
 		Array.Reverse (charArray);
 		string LstringReverse = new string (charArray);
+//		string LstringReverse = Lstring;
 
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
-				if(Lstring[i] == LstringReverse[j]){
-					locs.Add(new Vector3((float)i, 0f, (float)j));
+				for (int k = 0; k < dim; k++) {
+					if (Lstring [i] == Lstring [j]
+					   && Lstring [i] == Lstring [k]
+					   && Lstring [k] == Lstring [j]) {
+						locs.Add (new Vector3 ((float)i, (float)k, (float)j));
+//						locs.Add(new Vector3((float)i, 0f, (float)j));
+					}
 				}
 			}
 		}
 
-		print(locs.Count);
+		print (locs.Count);
 
-		for(int i = 0; i < locs.Count; i++){
-			GameObject cube = GameObject.CreatePrimitive (PrimitiveType.Cube);
-			cube.transform.position = locs[i];
+		for (int i = 0; i < locs.Count; i++) {
+			GameObject bit = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			bit.transform.position = locs [i];
+//			bit.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+//			bit.transform.Rotate(new Vector3(90f, 0f, 0f));
 		}
 
 
