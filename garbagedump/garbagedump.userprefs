@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LSYS/Scripts/LSYSstringGen.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LSYS/Scripts/LSYSgrammars.cs">
     <Files>
-      <File FileName="Assets/LSYS/Scripts/LSYSstringGen.cs" Line="29" Column="31" />
       <File FileName="Assets/LSYS/Scripts/LSYSgrammars.cs" Line="8" Column="11" />
+      <File FileName="Assets/LSYS/Scripts/LSYSstringGen.cs" Line="155" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

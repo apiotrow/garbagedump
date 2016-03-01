@@ -7,6 +7,10 @@ using System.Collections.Generic;
  */
 public class FractalGen : MonoBehaviour
 {
+	public string direction = "";
+
+	List<Vector3> allTileVecs;
+	
 	int maxChunkSize = 500;
 	//smaller chunks lead to higher framerates. larger makes fractal draw faster.
 	int maxChunks = 1000;
@@ -17,9 +21,9 @@ public class FractalGen : MonoBehaviour
 	//prefab fractal is composed of
 
 	HashSet<Vector3> dontDupe = new HashSet<Vector3> ();
-	float x = 0;
-	float y = 0;
-	float z = 0;
+	public float x = 0;
+	public float y = 0;
+	public float z = 0;
 	Queue<string> toRenderChunkQueue = new Queue<string> ();
 	Vector3 camGoTo;
 	GameObject[] chunkPool;
@@ -27,8 +31,57 @@ public class FractalGen : MonoBehaviour
 	int chunkPoolIter = 0;
 	int tilePoolIter = 0;
 
+	public bool rotIt = false;
+	GameObject lazyRotationHelper;
+
+
+	Vector3 rodate(Vector3 v, float degrees) {
+		float radians = degrees * Mathf.Deg2Rad;
+		float sin = Mathf.Sin(radians);
+		float cos = Mathf.Cos(radians);
+
+		float tx = v.x;
+		float ty = v.y;
+		float tz = v.z;
+
+		return new Vector3(cos * tx - sin * tz, ty, sin * tx + cos * tz);
+	}
+
+	void Update(){
+		if(rotIt){
+
+			for(int i = 0; i < chunkPool.Length; i++){
+				Vector3 hey = chunkPool[i].transform.position;
+//				hey = Quaternion.AngleAxis(30f, new Vector3(0, 1f, 0)) * hey;
+				hey = rodate(hey, 30f);
+				chunkPool[i].transform.position = hey;
+
+//				chunkPool[i].transform.RotateAround(Vector3.zero, Vector3.left, 10f);
+			}
+
+//			for(int i = 0; i < allTileVecs.Count; i++){
+//				lazyRotationHelper.transform.position = allTileVecs[i];
+//				lazyRotationHelper.transform.rotation = allTileVecs[i];
+//
+//				lazyRotationHelper.transform.RotateAround(Vector3.zero, Vector3.left, 10f);
+//
+//				allTileVecs[i] = lazyRotationHelper.transform.position;
+//				allTileVecs[i] = lazyRotationHelper.transform.rotation; 
+//			}
+
+			rotIt = false;
+		}
+	}
+
 	void Start ()
 	{
+		allTileVecs = new List<Vector3>();
+
+		//so we can rotate the fractal using GameObject.Transform function rather than
+		//do the math ourselves
+		lazyRotationHelper = new GameObject();
+		lazyRotationHelper.name = "lazyRotationHelper";
+
 		chunkPool = new GameObject[maxChunks];
 		for (int i = 0; i < chunkPool.Length; i++) {
 			GameObject newChunk = GameObject.Instantiate (Resources.Load ("LSYS/Prefabs/Chunk")) as GameObject;
@@ -46,8 +99,9 @@ public class FractalGen : MonoBehaviour
 			tilePool [i].SetActive (false);
 		}
 		
+//		Dictionary<string, string> rand1 = LSYSgrammars.makeRandomDic(3);
 
-		StartCoroutine (generateLStringDeterministic (LSYSgrammars.juliaSetish, 15, "a"));
+		StartCoroutine (generateLStringDeterministic (LSYSgrammars.levycurve, 13, "a"));
 		StartCoroutine (chunkFactory ());
 		StartCoroutine (cameraFollow ());
 	}
@@ -165,34 +219,74 @@ public class FractalGen : MonoBehaviour
 	{
 		List<Vector3> finals = new List<Vector3> ();
 		float increment = 1f;
-		foreach (char c in LString) {
-			switch (c) {
-			case 'a':
-				x += increment;
-				break;
-			case 'b':
-				z += increment;
-				break;
-			case 'c':
-				x -= increment;
-				break;
-			case 'd':
-				z -= increment;
-				break;	
-			case 'e':
-				z -= increment;
-				break;
-			case 'f':
-				z -= increment;
-				break;
-			}
 
-			//if fractal is not permanent, don't check for dupes, as little
-			//holes will show up in the chunk
-//			if(dontDupe.Add(new Vector3(x, y, z))){
-			finals.Add (new Vector3 (x, y, z));
-//			}
+		if(direction == "xz"){
+			foreach (char c in LString) {
+				switch (c) {
+				case 'a':
+					x += increment;
+					break;
+				case 'b':
+					z += increment;
+					break;
+				case 'c':
+					x -= increment;
+					break;
+				case 'd':
+					z -= increment;
+					break;	
+				case 'e':
+					z -= increment;
+					break;
+				case 'f':
+					z -= increment;
+					break;
+				}
+
+				//if fractal is not permanent, don't check for dupes, as little
+				//holes will show up in the chunk
+	//			if(dontDupe.Add(new Vector3(x, y, z))){
+				finals.Add (new Vector3 (x, y, z));
+	//			}
+
+				//holds ALL the fucking verts, ever.
+				allTileVecs.Add(new Vector3 (x, y, z));
+			}
+		}else if(direction == "xy"){
+			foreach (char c in LString) {
+				switch (c) {
+				case 'a':
+					x += increment;
+					break;
+				case 'b':
+					y += increment;
+					break;
+				case 'c':
+					x -= increment;
+					break;
+				case 'd':
+					y -= increment;
+					break;	
+				case 'e':
+					y -= increment;
+					break;
+				case 'f':
+					y -= increment;
+					break;
+				}
+
+				//if fractal is not permanent, don't check for dupes, as little
+				//holes will show up in the chunk
+				//			if(dontDupe.Add(new Vector3(x, y, z))){
+				finals.Add (new Vector3 (x, y, z));
+				//			}
+
+				//holds ALL the fucking verts, ever.
+				allTileVecs.Add(new Vector3 (x, y, z));
+			}
 		}
+
+		print(allTileVecs.Count);
 
 		if (finals.Count != 0)
 			createNewCamPos (finals [0]);

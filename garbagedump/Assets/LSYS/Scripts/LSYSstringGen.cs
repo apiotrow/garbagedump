@@ -1,41 +1,76 @@
 ﻿using UnityEngine;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public class LSYSstringGen : MonoBehaviour
 {
 	int inf = 0;
-	string Lstring;
+	//	string Lstring;
+
+
 
 	void Start ()
 	{
-//		StartCoroutine(generateLString(LSYSgrammars.rhombus, 5, "ac"));
-		generateLString (LSYSgrammars.levycurve, 5, "a");
+		
+		Dictionary<string, string> rand1 = LSYSgrammars.makeRandomDic(3);
+		Dictionary<string, string> rand2 = LSYSgrammars.makeRandomDic(3);
 
-//		print(Lstring);
 
-		int dim = Lstring.Length;
+
+
+
+
+		string one = generateLString (rand1, 4, "a");
+		string two = generateLString (rand2, 4, "c");
+		print (one);
+		print (two);
+		int dim = one.Length;
 		List<Vector3> locs = new List<Vector3> ();
 
-		char[] charArray = Lstring.ToCharArray ();
-		Array.Reverse (charArray);
-		string LstringReverse = new string (charArray);
-//		string LstringReverse = Lstring;
 
+		char[] charArray = one.ToCharArray ();
+		System.Array.Reverse (charArray);
+		string LstringReverse = new string (charArray);
+
+		Dictionary<char, float> hdic = new Dictionary<char, float>(){
+			{'a', 1f},
+			{'b', 2f},
+			{'c', 3f},
+			{'d', 4f}
+		};
+
+		//height
+//		for (int i = 0; i < dim; i++) {
+//			for (int j = 0; j < dim; j++) {
+//				if (one [i] == two [j]){
+//					float h = hdic[one[i]] + hdic[two[i]];
+//					locs.Add (new Vector3 ((float)i, h, (float)j));
+//				}
+//			}
+//		}
+
+
+		//2d
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
-				for (int k = 0; k < dim; k++) {
-					if (Lstring [i] == Lstring [j]
-					   && Lstring [i] == Lstring [k]
-					   && Lstring [k] == Lstring [j]) {
-						locs.Add (new Vector3 ((float)i, (float)k, (float)j));
-//						locs.Add(new Vector3((float)i, 0f, (float)j));
-					}
-				}
+				if (one [i] == two [j])
+					locs.Add(new Vector3((float)i, 0f, (float)j));
 			}
 		}
 
-		print (locs.Count);
+		//3d
+//		for (int i = 0; i < dim; i++) {
+//			for (int j = 0; j < dim; j++) {
+//				for (int k = 0; k < dim; k++) {
+//					if (one [i] == one [j]
+//						&& one [i] == one [k]
+//						&& one [k] == one [j]) {
+//						locs.Add (new Vector3 ((float)i, (float)k, (float)j));
+//					}
+//				}
+//			}
+//		}
+
 
 		for (int i = 0; i < locs.Count; i++) {
 			GameObject bit = GameObject.CreatePrimitive (PrimitiveType.Cube);
@@ -45,23 +80,14 @@ public class LSYSstringGen : MonoBehaviour
 		}
 
 
-//		Vector3[,] side = new Vector3[dim, dim];
-//		for(int i = 0; i < dim; i++){
-//			for(int j = 0; j < dim; j++){
-//				side[i][j] 
-//			}
-//
-//		}
 
 	}
 
 
-	void Update ()
-	{
-	
-	}
 
-	void generateLString (Dictionary<string, string> rules, int iterations, string initString)
+
+
+	string generateLString (Dictionary<string, string> rules, int iterations, string initString)
 	{
 		Stack<string> stringStack = new Stack<string> ();
 
@@ -85,10 +111,8 @@ public class LSYSstringGen : MonoBehaviour
 			}
 
 			n++;
-			print (initString.Length);
-			print (initString);
 		}
-		Lstring = initString;
+		return initString;
 	}
 
 
