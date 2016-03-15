@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/LSYS/Scenes/fractal-land.unity
+- path: Assets/DatabaseControl/Demos/CSharp Demo/loginDemoCSharp.unity
   isLoaded: 1
   isActive: 1

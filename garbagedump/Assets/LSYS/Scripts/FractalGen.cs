@@ -101,7 +101,7 @@ public class FractalGen : MonoBehaviour
 		
 //		Dictionary<string, string> rand1 = LSYSgrammars.makeRandomDic(3);
 
-		StartCoroutine (generateLStringDeterministic (LSYSgrammars.levycurve, 13, "a"));
+		StartCoroutine (generateLStringDeterministic (LSYSgrammars.wideSpiral, 7, "a"));
 		StartCoroutine (chunkFactory ());
 		StartCoroutine (cameraFollow ());
 	}

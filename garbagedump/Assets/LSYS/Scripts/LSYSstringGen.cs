@@ -14,14 +14,11 @@ public class LSYSstringGen : MonoBehaviour
 		
 		Dictionary<string, string> rand1 = LSYSgrammars.makeRandomDic(3);
 		Dictionary<string, string> rand2 = LSYSgrammars.makeRandomDic(3);
+//		Dictionary<string, string> rand3 = LSYSgrammars.makeRandomDic(3);
 
-
-
-
-
-
-		string one = generateLString (rand1, 4, "a");
-		string two = generateLString (rand2, 4, "c");
+		string one = generateLString (rand1, 3, "a");
+		string two = generateLString (rand2, 3, "a");
+//		string three = generateLString (rand3, 3, "c");
 		print (one);
 		print (two);
 		int dim = one.Length;
@@ -53,7 +50,7 @@ public class LSYSstringGen : MonoBehaviour
 		//2d
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
-				if (one [i] == two [j])
+				if (one [i] == one [j])
 					locs.Add(new Vector3((float)i, 0f, (float)j));
 			}
 		}
@@ -63,8 +60,8 @@ public class LSYSstringGen : MonoBehaviour
 //			for (int j = 0; j < dim; j++) {
 //				for (int k = 0; k < dim; k++) {
 //					if (one [i] == one [j]
-//						&& one [i] == one [k]
-//						&& one [k] == one [j]) {
+//						&& one [i] == three [k]
+//						&& three [k] == one [j]) {
 //						locs.Add (new Vector3 ((float)i, (float)k, (float)j));
 //					}
 //				}
@@ -73,7 +70,8 @@ public class LSYSstringGen : MonoBehaviour
 
 
 		for (int i = 0; i < locs.Count; i++) {
-			GameObject bit = GameObject.CreatePrimitive (PrimitiveType.Cube);
+//			GameObject bit = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			GameObject bit = GameObject.Instantiate (Resources.Load ("LSYS/Prefabs/marker")) as GameObject;
 			bit.transform.position = locs [i];
 //			bit.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 //			bit.transform.Rotate(new Vector3(90f, 0f, 0f));

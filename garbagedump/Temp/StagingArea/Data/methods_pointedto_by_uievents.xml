@@ -1,0 +1,17 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="ChatApp">
+			<method name="OpenRoom"/>
+			<method name="Join"/>
+			<method name="Shutdown"/>
+			<method name="SendButtonPressed"/>
+			<method name="Exit"/>
+		</type>
+		<type fullname="LocalTest">
+			<method name="StartTestButtonPressed"/>
+		</type>
+		<type fullname="MenuScene">
+			<method name="LoadChat"/>
+		</type>
+	</assembly>
+</linker>
